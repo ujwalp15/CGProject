@@ -5,12 +5,12 @@
 //  Created by NULL Pointers on 05/05/17.
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
-#include <GLUT/GLUT.h>
+#include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#define SPEED 10.0 // speed of traffic
+float SPEED=30.0; // speed of traffic
 
 float i = 0.0; // movement of car
 float m = 0.0; // movement of clouds
@@ -756,7 +756,26 @@ void keyboardFunc(unsigned char key, int x, int y) {
   case 'Y':
     light = 2;
     break;
-  };
+
+	case '+':
+ 		if(SPEED<80)
+ 			SPEED=SPEED+10;
+ 		else
+ 			printf("Warning! High Speed Alert!!\n");
+ 		break;
+
+ 		case '-':
+ 		if(SPEED>10)
+ 			SPEED=SPEED-10;
+ 		else
+ 			printf("Warning! Do not stop vehicle in running traffic!!\n");
+ 		break;
+
+ 		case 'q':
+ 		case 'Q':
+ 		exit(0);
+ 		break;
+  }
 }
 
 void main_menu(int index) {
@@ -774,6 +793,34 @@ void main_menu(int index) {
       c = 0.0;
     }
     break;
+
+  case 3:
+		if(index==3)
+		{
+			SPEED=10.0;
+		}
+		break;
+
+	case 4:
+		if(index==4)
+		{
+			SPEED=20.0;
+		}
+		break;
+
+	case 5:
+		if(index==5)
+		{
+			SPEED=30.0;
+		}
+		break;
+
+	case 6:
+		if(index==6)
+		{
+			SPEED=40.0;
+		}
+		break;
   }
 }
 
@@ -803,6 +850,10 @@ int main(int argc, char **argv) {
   printf("Press 'd' or 'D' to make it day \n");
   printf("Press 'n' or 'N' to make it night \n");
 
+  printf("Press '+' to increase the speed \n");
+	printf("Press '-' to increase the speed \n");
+	printf("Press 'q' or 'Q' to quit the program \n");
+
   printf("Press RIGHT MOUSE BUTTON to display menu , the whole image is paused "
          "until the menu is selected \n");
   printf("Press LEFT MOUSE BUTTON to quit the program \n");
@@ -818,10 +869,19 @@ int main(int argc, char **argv) {
   glutMouseFunc(mouse);
   myinit();
 
-  c_menu = glutCreateMenu(main_menu);
-  glutAddMenuEntry("Aeroplane", 1);
-  glutAddMenuEntry("Comet", 2);
-  glutAttachMenu(GLUT_RIGHT_BUTTON);
+  // create a sub menu to change speed
+	int subMenu = glutCreateMenu(main_menu);
+	glutAddMenuEntry("10",3);
+	glutAddMenuEntry("20",4);
+	glutAddMenuEntry("30",5);
+	glutAddMenuEntry("40",6);
+
+
+	c_menu=glutCreateMenu(main_menu);
+	glutAddSubMenu("Speed",subMenu);
+	glutAddMenuEntry("Aeroplane",1);
+	glutAddMenuEntry("Comet",2);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
   glutMainLoop();
   return 0;
