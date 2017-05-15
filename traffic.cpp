@@ -23,6 +23,28 @@ int day = 1;   // 1 for day ,0 for night
 int plane = 0; // 1 for plane
 int comet = 0; // 1 for comet
 
+bool highspeed=false;
+bool lowspeed=false;
+
+void *currentfont;
+
+void setFont(void *font)
+{
+	currentfont=font;
+}
+
+void drawstring(float x,float y,float z,char* string)
+{
+	char *c;
+	glRasterPos3f(x,y,z);
+
+	for(c=string;*c!='\0';c++)
+	{
+    glColor3f(0.0,0.0,0.0);
+		glutBitmapCharacter(currentfont,*c);
+	}
+}
+
 void draw_pixel(GLint cx, GLint cy) {
 
   glBegin(GL_POINTS);
@@ -726,11 +748,6 @@ void idle() {
   glutPostRedisplay();
 }
 
-void mouse(int btn, int state, int x, int y) {
-  if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-    exit(0);
-}
-
 void keyboardFunc(unsigned char key, int x, int y) {
   switch (key) {
   case 'g':
@@ -758,17 +775,23 @@ void keyboardFunc(unsigned char key, int x, int y) {
     break;
 
 	case '+':
- 		if(SPEED<80)
+ 		if(SPEED<80) {
+      highspeed=false;
+      lowspeed=false;
  			SPEED=SPEED+10;
+    }
  		else
- 			printf("Warning! High Speed Alert!!\n");
+      highspeed=true;
  		break;
 
  		case '-':
- 		if(SPEED>10)
+ 		if(SPEED>10) {
+      lowspeed=false;
+      highspeed=false;
  			SPEED=SPEED-10;
+    }
  		else
- 			printf("Warning! Do not stop vehicle in running traffic!!\n");
+      lowspeed=true;
  		break;
 
  		case 'q':
@@ -837,6 +860,16 @@ void display() {
   glClear(GL_COLOR_BUFFER_BIT);
   draw_object();
   traffic_light();
+  if(highspeed) {
+    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+    glColor3f(1,0,0);
+    drawstring(400.0,200.0,0.0,"Warning! High Speed Alert!!");
+  }
+  if(lowspeed) {
+    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+    glColor3f(1,0,0);
+    drawstring(400.0,200.0,0.0,"Warning! Do not stop vehicle in running traffic!!");
+  }
   glFlush();
   glutSwapBuffers();
 }
@@ -856,7 +889,6 @@ int main(int argc, char **argv) {
 
   printf("Press RIGHT MOUSE BUTTON to display menu , the whole image is paused "
          "until the menu is selected \n");
-  printf("Press LEFT MOUSE BUTTON to quit the program \n");
 
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
@@ -866,7 +898,6 @@ int main(int argc, char **argv) {
   glutDisplayFunc(display);
   glutIdleFunc(idle);
   glutKeyboardFunc(keyboardFunc);
-  glutMouseFunc(mouse);
   myinit();
 
   // create a sub menu to change speed
