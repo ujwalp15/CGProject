@@ -5,44 +5,40 @@
 //  Created by NULL Pointers on 05/05/17.
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
-#include <GL/glut.h>
+#include <GLUT/GLUT.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-float SPEED=30.0; // speed of traffic
+float SPEED = 30.0; // speed of traffic
 
-float i = 0.0; // movement of car
-float m = 0.0; // movement of clouds
-float n = 0.0; // movement of plane along x-axis
-float o = 0.0; //  and y-axis
-float c = 0.0; // movement of comet	SS
+float i = 0.0;     // movement of car
+float m = 0.0;     // movement of clouds
+float n = 0.0;     // movement of plane along x-axis
+float o = 0.0;     //  and y-axis
+float c = 0.0;     // movement of comet	SS
+float angle = 0.0; // Angle of rotation for cloud
 
 int light = 1; // 1 for green-light, 0 for red-light
 int day = 1;   // 1 for day ,0 for night
 int plane = 0; // 1 for plane
 int comet = 0; // 1 for comet
 
-bool highspeed=false;
-bool lowspeed=false;
+GLboolean highspeed = false;
+GLboolean lowspeed = false;
 
 void *currentfont;
 
-void setFont(void *font)
-{
-	currentfont=font;
-}
+void setFont(void *font) { currentfont = font; }
 
-void drawstring(float x,float y,float z,char* string)
-{
-	char *c;
-	glRasterPos3f(x,y,z);
+void drawstring(float x, float y, float z, char *string) {
+  char *c;
+  glRasterPos3f(x, y, z);
 
-	for(c=string;*c!='\0';c++)
-	{
-    glColor3f(0.0,0.0,0.0);
-		glutBitmapCharacter(currentfont,*c);
-	}
+  for (c = string; *c != '\0'; c++) {
+    glColor3f(0.0, 0.0, 0.0);
+    glutBitmapCharacter(currentfont, *c);
+  }
 }
 
 void draw_pixel(GLint cx, GLint cy) {
@@ -91,11 +87,15 @@ void draw_object() {
     glEnd();
 
     // sun
-
+    glPushMatrix();
+    glTranslatef(100, 625, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-100, -625, 0);
     for (l = 0; l <= 35; l++) {
       glColor3f(1.0, 0.7, 0.1);
       draw_circle(100, 625, l);
     }
+    glPopMatrix();
 
     // plane
     if (plane == 1) {
@@ -121,11 +121,16 @@ void draw_object() {
     }
 
     // cloud1
-
+    // glPushMatrix();
+    // glTranslatef(-160, 625, 0);
+    // glRotatef(angle, 0.0, 0.0, 1.0);
     for (l = 0; l <= 20; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(160 + m, 625, l);
     }
+
+    // glTranslatef(-215, 625, 0);
+    // glRotatef(angle, 0.0, 0.0, 1.0);
 
     for (l = 0; l <= 35; l++) {
       glColor3f(1.0, 1.0, 1.0);
@@ -133,10 +138,14 @@ void draw_object() {
       draw_circle(225 + m, 625, l);
     }
 
+    // glTranslatef(265, 625, 0);
+    // glRotatef(angle, 0.0, 0.0, 1.0);
+
     for (l = 0; l <= 20; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(265 + m, 625, l);
     }
+    // glPopMatrix();
 
     // cloud2
 
@@ -682,6 +691,7 @@ void traffic_light() {
 
 void idle() {
   glClearColor(1.0, 1.0, 1.0, 1.0);
+  angle += 1.0;
   if ((light == 0 || light == 2) &&
       (i >= 330 &&
        i <= 750)) // value of i when first vehicle is near the traffic-signal
@@ -774,30 +784,28 @@ void keyboardFunc(unsigned char key, int x, int y) {
     light = 2;
     break;
 
-	case '+':
- 		if(SPEED<80) {
-      highspeed=false;
-      lowspeed=false;
- 			SPEED=SPEED+10;
-    }
- 		else
-      highspeed=true;
- 		break;
+  case '+':
+    if (SPEED < 80) {
+      highspeed = false;
+      lowspeed = false;
+      SPEED = SPEED + 10;
+    } else
+      highspeed = true;
+    break;
 
- 		case '-':
- 		if(SPEED>10) {
-      lowspeed=false;
-      highspeed=false;
- 			SPEED=SPEED-10;
-    }
- 		else
-      lowspeed=true;
- 		break;
+  case '-':
+    if (SPEED > 10) {
+      lowspeed = false;
+      highspeed = false;
+      SPEED = SPEED - 10;
+    } else
+      lowspeed = true;
+    break;
 
- 		case 'q':
- 		case 'Q':
- 		exit(0);
- 		break;
+  case 'q':
+  case 'Q':
+    exit(0);
+    break;
   }
 }
 
@@ -818,32 +826,28 @@ void main_menu(int index) {
     break;
 
   case 3:
-		if(index==3)
-		{
-			SPEED=10.0;
-		}
-		break;
+    if (index == 3) {
+      SPEED = 10.0;
+    }
+    break;
 
-	case 4:
-		if(index==4)
-		{
-			SPEED=20.0;
-		}
-		break;
+  case 4:
+    if (index == 4) {
+      SPEED = 20.0;
+    }
+    break;
 
-	case 5:
-		if(index==5)
-		{
-			SPEED=30.0;
-		}
-		break;
+  case 5:
+    if (index == 5) {
+      SPEED = 30.0;
+    }
+    break;
 
-	case 6:
-		if(index==6)
-		{
-			SPEED=40.0;
-		}
-		break;
+  case 6:
+    if (index == 6) {
+      SPEED = 40.0;
+    }
+    break;
   }
 }
 
@@ -860,15 +864,16 @@ void display() {
   glClear(GL_COLOR_BUFFER_BIT);
   draw_object();
   traffic_light();
-  if(highspeed) {
+  if (highspeed) {
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-    glColor3f(1,0,0);
-    drawstring(400.0,200.0,0.0,"Warning! High Speed Alert!!");
+    glColor3f(1, 0, 0);
+    drawstring(400.0, 200.0, 0.0, "Warning! High Speed Alert!!");
   }
-  if(lowspeed) {
+  if (lowspeed) {
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-    glColor3f(1,0,0);
-    drawstring(400.0,200.0,0.0,"Warning! Do not stop vehicle in running traffic!!");
+    glColor3f(1, 0, 0);
+    drawstring(400.0, 200.0, 0.0,
+               "Warning! Do not stop vehicle in running traffic!!");
   }
   glFlush();
   glutSwapBuffers();
@@ -884,8 +889,8 @@ int main(int argc, char **argv) {
   printf("Press 'n' or 'N' to make it night \n");
 
   printf("Press '+' to increase the speed \n");
-	printf("Press '-' to increase the speed \n");
-	printf("Press 'q' or 'Q' to quit the program \n");
+  printf("Press '-' to increase the speed \n");
+  printf("Press 'q' or 'Q' to quit the program \n");
 
   printf("Press RIGHT MOUSE BUTTON to display menu , the whole image is paused "
          "until the menu is selected \n");
@@ -901,18 +906,17 @@ int main(int argc, char **argv) {
   myinit();
 
   // create a sub menu to change speed
-	int subMenu = glutCreateMenu(main_menu);
-	glutAddMenuEntry("10",3);
-	glutAddMenuEntry("20",4);
-	glutAddMenuEntry("30",5);
-	glutAddMenuEntry("40",6);
+  int subMenu = glutCreateMenu(main_menu);
+  glutAddMenuEntry("10", 3);
+  glutAddMenuEntry("20", 4);
+  glutAddMenuEntry("30", 5);
+  glutAddMenuEntry("40", 6);
 
-
-	c_menu=glutCreateMenu(main_menu);
-	glutAddSubMenu("Speed",subMenu);
-	glutAddMenuEntry("Aeroplane",1);
-	glutAddMenuEntry("Comet",2);
-	glutAttachMenu(GLUT_RIGHT_BUTTON);
+  c_menu = glutCreateMenu(main_menu);
+  glutAddSubMenu("Speed", subMenu);
+  glutAddMenuEntry("Aeroplane", 1);
+  glutAddMenuEntry("Comet", 2);
+  glutAttachMenu(GLUT_RIGHT_BUTTON);
 
   glutMainLoop();
   return 0;
