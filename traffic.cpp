@@ -122,9 +122,9 @@ void draw_object() {
 
     // cloud1
     glPushMatrix();
-    glTranslatef(215 + m, 625, 0);
+    glTranslatef(170 + m, 625, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-215 - m, -625, 0);
+    glTranslatef(-170 - m, -625, 0);
     for (l = 0; l <= 20; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(160 + m, 625, l);
@@ -132,20 +132,20 @@ void draw_object() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(200 + m, +625, 0);
+    glTranslatef(195 + m, +625, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
     glTranslatef(-200 - m, -625, 0);
     for (l = 0; l <= 35; l++) {
       glColor3f(1.0, 1.0, 1.0);
-      draw_circle(200 + m, 625, l);
+      draw_circle(195 + m, 625, l);
       //   draw_circle(225 + m, 625, l)
     }
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(225 + m, 625, 0);
+    glTranslatef(235 + m, 625, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-225 - m, -625, 0);
+    glTranslatef(-230 - m, -625, 0);
 
     for (l = 0; l <= 35; l++) {
       glColor3f(1.0, 1.0, 1.0);
@@ -155,20 +155,29 @@ void draw_object() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(215 + m, 625, 0);
-    glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-215 - m, -625, 0);
+    glTranslatef(245 + m, 625, 0);
+    glRotatef(-angle + 80, 0.0, 0.0, 1.0);
+    glTranslatef(-245 - m, -625, 0);
     for (l = 0; l <= 20; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(265 + m, 625, l);
     }
     glPopMatrix();
 
+    for (l = 0; l <= 20; l++) {
+      glColor3f(1.0, 1.0, 1.0);
+      draw_circle(160 + m, 625, l);
+    }
+    for (l = 0; l <= 20; l++) {
+      glColor3f(1.0, 1.0, 1.0);
+      draw_circle(265 + m, 625, l);
+    }
+
     // cloud2
     glPushMatrix();
-    glTranslatef(370 + m, 615, 0);
+    glTranslatef(380 + m, 615, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-370 - m, -615, 0);
+    glTranslatef(-380 - m, -615, 0);
     for (l = 0; l <= 20; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(370 + m, 615, l);
@@ -178,7 +187,7 @@ void draw_object() {
     glPushMatrix();
     glTranslatef(410 + m, +615, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-410 - m, -615, 0);
+    glTranslatef(-405 - m, -615, 0);
     for (l = 0; l <= 35; l++) {
 
       glColor3f(1.0, 1.0, 1.0);
@@ -191,7 +200,7 @@ void draw_object() {
     glPushMatrix();
     glTranslatef(435 + m, 615, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-435 - m, -615, 0);
+    glTranslatef(-433 - m, -615, 0);
     for (l = 0; l <= 35; l++) {
 
       glColor3f(1.0, 1.0, 1.0);
@@ -204,7 +213,7 @@ void draw_object() {
     glPushMatrix();
     glTranslatef(470 + m, 615, 0);
     glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-470 - m, -615, 0);
+    glTranslatef(-468 - m, -615, 0);
     for (l = 0; l <= 35; l++) {
 
       glColor3f(1.0, 1.0, 1.0);
@@ -215,14 +224,20 @@ void draw_object() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(500 + m, 615, 0);
-    glRotatef(angle, 0.0, 0.0, 1.0);
-    glTranslatef(-500 - m, -615, 0);
+    glTranslatef(490 + m, 615, 0);
+    glRotatef(-angle + 80, 0.0, 0.0, 1.0);
+    glTranslatef(-490 - m, -615, 0);
     for (l = 0; l <= 20; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(500 + m, 615, l);
     }
     glPopMatrix();
+
+    for (l = 0; l <= 20; l++) {
+      glColor3f(1.0, 1.0, 1.0);
+      draw_circle(370 + m, 615, l);
+      draw_circle(500 + m, 615, l);
+    }
 
     // grass
     glColor3f(0.9, 0.5, 0.3);
