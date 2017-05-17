@@ -291,14 +291,21 @@ void draw_object() {
 
     // moon
     int l;
-
+    glPushMatrix();
+    glTranslatef(100, 625, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-100, -625, 0);
     for (l = 0; l <= 35; l++) {
       glColor3f(1.0, 1.0, 1.0);
       draw_circle(100, 625, l);
     }
+    glPopMatrix();
 
     // star1
-
+    glPushMatrix();
+    glTranslatef(575, 647, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-575, -647, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(575, 653);
@@ -308,8 +315,13 @@ void draw_object() {
     glVertex2f(570, 650);
     glVertex2f(580, 650);
     glEnd();
+    glPopMatrix();
 
     // star2
+    glPushMatrix();
+    glTranslatef(975, 637, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-975, -637, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(975, 643);
@@ -319,8 +331,13 @@ void draw_object() {
     glVertex2f(970, 640);
     glVertex2f(980, 640);
     glEnd();
+    glPopMatrix();
 
     // star3
+    glPushMatrix();
+    glTranslatef(875, 537, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-875, -537, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(875, 543);
@@ -330,8 +347,13 @@ void draw_object() {
     glVertex2f(870, 540);
     glVertex2f(880, 540);
     glEnd();
+    glPopMatrix();
 
     // star4
+    glPushMatrix();
+    glTranslatef(375, 593, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-375, -593, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(375, 598);
@@ -341,8 +363,13 @@ void draw_object() {
     glVertex2f(370, 595);
     glVertex2f(380, 595);
     glEnd();
+    glPopMatrix();
 
     // star5
+    glPushMatrix();
+    glTranslatef(750, 623, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-750, -623, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(750, 628);
@@ -352,8 +379,13 @@ void draw_object() {
     glVertex2f(745, 625);
     glVertex2f(755, 625);
     glEnd();
+    glPopMatrix();
 
     // star6
+    glPushMatrix();
+    glTranslatef(200, 623, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-200, -623, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(200, 628);
@@ -363,8 +395,13 @@ void draw_object() {
     glVertex2f(195, 625);
     glVertex2f(205, 625);
     glEnd();
+    glPopMatrix();
 
     // star7
+    glPushMatrix();
+    glTranslatef(500, 537, 0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
+    glTranslatef(-500, -537, 0);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_TRIANGLES);
     glVertex2f(500, 543);
@@ -374,6 +411,7 @@ void draw_object() {
     glVertex2f(495, 540);
     glVertex2f(505, 540);
     glEnd();
+    glPopMatrix();
 
     // comet
     if (comet == 1) {
