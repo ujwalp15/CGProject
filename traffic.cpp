@@ -5,7 +5,7 @@
 //  Created by NULL Pointers on 05/05/17.
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
-#include <GLUT/GLUT.h>
+#include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -453,6 +453,42 @@ void draw_object() {
   glVertex2f(0, 150);
   glVertex2f(1100, 150);
   glVertex2f(1100, 0);
+  glEnd();
+
+  //Zebra Crossing
+  glColor3f(1,1,1);
+  glLineWidth(4);
+  glBegin(GL_LINES);
+  glVertex2i(1060,140);
+  glVertex2i(1100,140);
+  glVertex2i(1060,130);
+  glVertex2i(1100,130);
+  glVertex2i(1060,120);
+  glVertex2i(1100,120);
+  glVertex2i(1100,110);
+  glVertex2i(1060,110);
+  glVertex2i(1060,100);
+  glVertex2i(1100,100);
+  glVertex2i(1060,90);
+  glVertex2i(1100,90);
+  glVertex2i(1060,80);
+  glVertex2i(1100,80);
+  glVertex2i(1060,70);
+  glVertex2i(1100,70);
+  glVertex2i(1060,60);
+  glVertex2i(1100,60);
+  glVertex2i(1060,50);
+  glVertex2i(1100,50);
+  glVertex2i(1060,40);
+  glVertex2i(1100,40);
+  glVertex2i(1060,30);
+  glVertex2i(1100,30);
+  glVertex2i(1060,20);
+  glVertex2i(1100,20);
+  glVertex2i(1060,10);
+  glVertex2i(1100,10);
+  glVertex2i(1060,00);
+  glVertex2i(1100,00);
   glEnd();
 
   // tree
