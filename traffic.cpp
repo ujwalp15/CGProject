@@ -24,9 +24,10 @@ int day = 1;   // 1 for day ,0 for night
 int plane = 0; // 1 for plane
 int comet = 0; // 1 for comet
 
-GLboolean highspeed = false;
-GLboolean lowspeed = false;
+GLboolean highspeed = false; //true for highspeed vehicles
+GLboolean lowspeed = false; //true for lowspeed vehicles
 
+int flag=0;
 void *currentfont;
 
 void setFont(void *font) { currentfont = font; }
@@ -866,8 +867,97 @@ void idle() {
   glutPostRedisplay();
 }
 
+void display() {
+  glClear(GL_COLOR_BUFFER_BIT);
+  if(flag==0) {
+    //START SCREEN
+    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+    glClearColor(0.15,0.1,0.01,0);/*background for cover page*/
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1,0,0);
+    drawstring(350.0,650.0,0.0,"REVA INSTITUTE OF TECHNOLOGY AND MANAGEMENT");
+    glColor3f(0.7,0,1);
+    drawstring(450,600,0.0,"DEPARTMENT OF C AND IT");
+    glColor3f(1,0.5,0);
+    drawstring(420,550,0.0,"COMPUTER GRAPHIC PROJECT ON");
+    glColor3f(1,0,0);
+    drawstring(440,500,0.0,"TRAFFIC SIGNAL SIMULATION");
+    glColor3f(1,0.5,0);
+    drawstring(200,400,0.0,"BY:");
+    glColor3f(1,1,1);
+    drawstring(100,300,0.0,"UJWAL P  (1RE14CS125)");
+    glColor3f(1,1,1);
+    drawstring(100,240,0.0,"K SAI SOMANATH   (1RE14CS126)");
+    glColor3f(1,0.5,0);
+    drawstring(850,400,0.0,"GUIDES:");
+    glColor3f(1,1,1);
+    drawstring(750,300,0.0,"Prof. NAVEEN CHANDRA GOWDA");
+    glColor3f(1,1,1);
+    drawstring(750,240,0.0,"Prof. CHAITHRA M H");
+    glColor3f(1,0.1,1);
+    drawstring(450,100,0.0,"PRESS ENTER TO START");
+    glFlush();
+  } else if(flag==1) {
+    //HELP SCREEN
+    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+    glClearColor(0,0,0,0);/*background for cover page*/
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0,1,0);
+    drawstring(550.0,700.0,0.0,"TIPS");
+    glColor3f(1,0,0);
+    drawstring(650.0,700.0,0.0,"AND");
+    glColor3f(0,0,1);
+    drawstring(750.0,700.0,0.0,"TRICKS");
+    glColor3f(0.5,0.1,0.2);
+    drawstring(350.0,640.0,0.0,"Stop the traffic (Red Light)                                  PRESS 'r' or 'R'");
+    glColor3f(0.5,0.1,0.3);
+    drawstring(350.0,540.0,0.0,"Yellow Signal                                                        PRESS 'y' or 'Y'");
+    glColor3f(0.5,0.1,0.4);
+    drawstring(350.0,440.0,0.0,"Green Signal                                                         PRESS 'g' or 'G'");
+    glColor3f(0.4,0.1,0.5);
+    drawstring(350.0,340.0,0.0,"Inc or Dec speed                                                  PRESS '+' or '-'");
+    glColor3f(0.5,0.1,0.6);
+    drawstring(350.0,240.0,0.0,"Day or Night                                                         PRESS 'd' or 'n'");
+    glColor3f(0.5,0.1,0.7);
+    drawstring(350.0,140.0,0.0,"Menu                                                                    MOUSE RIGHT BUTTON");
+    glColor3f(0.5,0.1,0.8);
+    drawstring(350.0,90.0,0.0,"Help                                                                      PRESS 'h' or 'H'");
+    glColor3f(0.5,0.1,0.9);
+    drawstring(350.0,40.0,0.0,"Escape                                                                  PRESS 'ENTER'");
+    glFlush();
+  } else if(flag==2) {
+
+    //MAIN SCREEN
+    draw_object();
+    traffic_light();
+    if (highspeed) {
+      setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+      glColor3f(1, 0, 0);
+      drawstring(400.0, 200.0, 0.0, "Warning! High Speed Alert!!");
+    }
+    if (lowspeed) {
+      setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+      glColor3f(1, 0, 0);
+      drawstring(400.0, 200.0, 0.0,
+                 "Warning! Do not stop vehicle in running traffic!!");
+    }
+  }
+  glFlush();
+  glutSwapBuffers();
+}
+
 void keyboardFunc(unsigned char key, int x, int y) {
   switch (key) {
+    case 13:
+  		if(flag==1) {
+  			flag=2;
+  			display();
+  		}
+  		if(flag==0) {
+  	    flag=1;
+        display();
+  		}
+      break;
   case 'g':
   case 'G':
     light = 1;
@@ -908,6 +998,9 @@ void keyboardFunc(unsigned char key, int x, int y) {
       SPEED = SPEED - 10;
     } else
       lowspeed = true;
+    break;
+
+  case 'h':flag=1;display();
     break;
 
   case 'q':
@@ -968,25 +1061,6 @@ void myinit() {
   gluOrtho2D(0.0, 1100.0, 0.0, 700.0);
 }
 
-void display() {
-  glClear(GL_COLOR_BUFFER_BIT);
-  draw_object();
-  traffic_light();
-  if (highspeed) {
-    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-    glColor3f(1, 0, 0);
-    drawstring(400.0, 200.0, 0.0, "Warning! High Speed Alert!!");
-  }
-  if (lowspeed) {
-    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-    glColor3f(1, 0, 0);
-    drawstring(400.0, 200.0, 0.0,
-               "Warning! Do not stop vehicle in running traffic!!");
-  }
-  glFlush();
-  glutSwapBuffers();
-}
-
 int main(int argc, char **argv) {
   int c_menu;
   printf("Press 'r' or 'R' to change the signal light to red \n");
@@ -1005,7 +1079,7 @@ int main(int argc, char **argv) {
 
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-  glutInitWindowSize(1100.0, 700.0);
+  glutInitWindowSize(2000.0, 1100.0);
   glutInitWindowPosition(0, 0);
   glutCreateWindow("Traffic Control");
   glutDisplayFunc(display);
