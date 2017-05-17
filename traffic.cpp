@@ -5,7 +5,7 @@
 //  Created by NULL Pointers on 05/05/17.
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
-#include <GL/glut.h>
+#include "glut.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
