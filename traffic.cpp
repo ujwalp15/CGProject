@@ -6,8 +6,7 @@
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
 
-//#include <GLUT/GLUT.h>
-#include "glut.h"
+#include <GLUT/GLUT.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -1246,41 +1245,45 @@ void display() {
     glClearColor(0, 0, 0, 0); /*background for cover page*/
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(0, 1, 0);
-    drawstring(550.0, 700.0, 0.0, "TIPS");
+    drawstring(400.0, 600.0, 0.0, "TIPS");
     glColor3f(1, 0, 0);
-    drawstring(650.0, 700.0, 0.0, "AND");
+    drawstring(500.0, 600.0, 0.0, "AND");
     glColor3f(0, 0, 1);
-    drawstring(750.0, 700.0, 0.0, "TRICKS");
+    drawstring(600.0, 600.0, 0.0, "TRICKS");
     glColor3f(0.5, 0.1, 0.2);
-    drawstring(350.0, 640.0, 0.0,
+    drawstring(250.0, 500.0, 0.0,
                "Stop the traffic (Red Light)                                  "
                "PRESS 'r' or 'R'");
     glColor3f(0.5, 0.1, 0.3);
-    drawstring(350.0, 540.0, 0.0,
+    drawstring(250.0, 450.0, 0.0,
                "Yellow Signal                                                  "
                "      PRESS 'y' or 'Y'");
     glColor3f(0.5, 0.1, 0.4);
-    drawstring(350.0, 440.0, 0.0,
+    drawstring(250.0, 400.0, 0.0,
                "Green Signal                                                   "
                "      PRESS 'g' or 'G'");
     glColor3f(0.4, 0.1, 0.5);
-    drawstring(350.0, 340.0, 0.0,
+    drawstring(250.0, 350.0, 0.0,
                "Inc or Dec speed                                               "
                "   PRESS '+' or '-'");
     glColor3f(0.5, 0.1, 0.6);
-    drawstring(350.0, 240.0, 0.0,
+    drawstring(250.0, 300.0, 0.0,
                "Day or Night                                                   "
                "      PRESS 'd' or 'n'");
+    glColor3f(0.5, 0.1, 0.65);
+    drawstring(250.0, 250.0, 0.0,
+               "Traffic direction                                              "
+               "      PRESS 'l' or 'L'");
     glColor3f(0.5, 0.1, 0.7);
-    drawstring(350.0, 140.0, 0.0,
+    drawstring(250.0, 200.0, 0.0,
                "Menu                                                           "
                "         MOUSE RIGHT BUTTON");
     glColor3f(0.5, 0.1, 0.8);
-    drawstring(350.0, 90.0, 0.0,
+    drawstring(250.0, 150.0, 0.0,
                "Help                                                           "
                "           PRESS 'h' or 'H'");
     glColor3f(0.5, 0.1, 0.9);
-    drawstring(350.0, 40.0, 0.0,
+    drawstring(250.0, 100.0, 0.0,
                "Escape                                                         "
                "         PRESS 'ENTER'");
     glFlush();
