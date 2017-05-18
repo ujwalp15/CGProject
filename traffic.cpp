@@ -930,6 +930,54 @@ void draw_object() {
       draw_circle(1100 + 350 - i, 50, l);
       draw_circle(1100 + 200 - i, 50, l);
     }
+
+    // bus
+    glColor3f(0.6, 0.3, 0.8);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 - 350 + i, 50);
+    glVertex2f(1100 - 350 + i, 275);
+    glVertex2f(1100 - 722 + i, 275);
+    glVertex2f(1100 - 750 + i, 175);
+    glVertex2f(1100 - 750 + i, 50);
+    glEnd();
+
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 - 650 + i, 175);
+    glVertex2f(1100 - 650 + i, 260);
+    glVertex2f(1100 - 720 + i, 260);
+    glVertex2f(1100 - 745 + i, 175);
+    glEnd();
+
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 - 550 + i, 175);
+    glVertex2f(1100 - 550 + i, 260);
+    glVertex2f(1100 - 625 + i, 260);
+    glVertex2f(1100 - 625 + i, 175);
+    glEnd();
+
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 - 450 + i, 175);
+    glVertex2f(1100 - 450 + i, 260);
+    glVertex2f(1100 - 525 + i, 260);
+    glVertex2f(1100 - 525 + i, 175);
+    glEnd();
+
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 - 375 + i, 175);
+    glVertex2f(1100 - 375 + i, 260);
+    glVertex2f(1100 - 425 + i, 260);
+    glVertex2f(1100 - 425 + i, 175);
+    glEnd();
+
+    for (l = 0; l < 30; l++) {
+      glColor3f(0.0, 0.0, 0.0);
+      draw_circle(450 + i, 50, l);
+      draw_circle(625 + i, 50, l);
+    }
   }
 
   glFlush();
