@@ -1070,70 +1070,141 @@ void traffic_light() {
 void idle() {
   glClearColor(1.0, 1.0, 1.0, 1.0);
   angle += 1.0;
-  if ((light == 0 || light == 2) &&
-      (i >= 330 &&
-       i <= 750)) // value of i when first vehicle is near the traffic-signal
-  {
+  // Logic for default directio of traffic
+  if (right == true) {
+    if ((light == 0 || light == 2) &&
+        (i >= 330 &&
+         i <= 750)) // value of i when first vehicle is near the traffic-signal
+    {
 
-    i += SPEED / 10;
-    ++m;
-    n -= 2;
-    o += 0.2;
-    c += 2;
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2) &&
+        (i >= 830 &&
+         i <=
+             1100)) // value of i when second vehicle is near the traffic-signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2) &&
+        (i >= 1200 &&
+         i <= 1620)) // value of i when third vehicle is near the traffic signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2)) {
+      i = i;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+
+    }
+
+    else {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+    if (i > 1630)
+      i = 0.0;
+    if (m > 1100)
+      m = 0.0;
+    if (o > 75) {
+      plane = 0;
+    }
+    if (c > 500) {
+      comet = 0;
+    }
+    glutPostRedisplay();
+  } else {
+    // Logic for opposite-way traffic
+    if ((light == 0 || light == 2) &&
+        (i >= 330 &&
+         i <= 750)) // value of i when first vehicle is near the traffic-signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2) &&
+        (i >= 830 &&
+         i <=
+             1100)) // value of i when second vehicle is near the traffic-signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2) &&
+        (i >= 1200 &&
+         i <= 1620)) // value of i when third vehicle is near the traffic signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2)) {
+      i = i;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+
+    }
+
+    else {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+    if (i > 1630)
+      i = 0.0;
+    if (m > 1100)
+      m = 0.0;
+    if (o > 75) {
+      plane = 0;
+    }
+    if (c > 500) {
+      comet = 0;
+    }
+    glutPostRedisplay();
   }
-
-  if ((light == 0 || light == 2) &&
-      (i >= 830 &&
-       i <= 1100)) // value of i when second vehicle is near the traffic-signal
-  {
-
-    i += SPEED / 10;
-    ++m;
-    n -= 2;
-    o += 0.2;
-    c += 2;
-  }
-
-  if ((light == 0 || light == 2) &&
-      (i >= 1200 &&
-       i <= 1620)) // value of i when third vehicle is near the traffic signal
-  {
-
-    i += SPEED / 10;
-    ++m;
-    n -= 2;
-    o += 0.2;
-    c += 2;
-  }
-
-  if ((light == 0 || light == 2)) {
-    i = i;
-    ++m;
-    n -= 2;
-    o += 0.2;
-    c += 2;
-
-  }
-
-  else {
-
-    i += SPEED / 10;
-    ++m;
-    n -= 2;
-    o += 0.2;
-    c += 2;
-  }
-  if (i > 1630)
-    i = 0.0;
-  if (m > 1100)
-    m = 0.0;
-  if (o > 75) {
-    plane = 0;
-  }
-  if (c > 500) {
-    comet = 0;
-  }
-  glutPostRedisplay();
 }
 
 void display() {
