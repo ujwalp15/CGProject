@@ -7,12 +7,12 @@
 //
 
 //#include <GLUT/GLUT.h>
-##include "glut.h"
+#include "glut.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-    float SPEED = 30.0; // speed of traffic
+float SPEED = 30.0; // speed of traffic
 
 float i = 0.0;     // movement of car
 float m = 0.0;     // movement of clouds
@@ -1438,6 +1438,7 @@ int main(int argc, char **argv) {
 
   printf("Press '+' to increase the speed \n");
   printf("Press '-' to increase the speed \n");
+  printf("Press 'l' or 'L' to change the direction of the traffic \n");
   printf("Press 'q' or 'Q' to quit the program \n");
 
   printf("Press RIGHT MOUSE BUTTON to display menu , the whole image is paused "
