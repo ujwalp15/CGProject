@@ -6,12 +6,13 @@
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
 
-#include <GLUT/GLUT.h>
+//#include <GLUT/GLUT.h>
+##include "glut.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-float SPEED = 30.0; // speed of traffic
+    float SPEED = 30.0; // speed of traffic
 
 float i = 0.0;     // movement of car
 float m = 0.0;     // movement of clouds
@@ -1138,7 +1139,8 @@ void idle() {
     }
     glutPostRedisplay();
   } else {
-    // Logic for opposite-way traffic
+
+    // Logic for opposite-way traffic lights
     if ((light == 0 || light == 2) &&
         (i >= 330 &&
          i <= 750)) // value of i when first vehicle is near the traffic-signal
@@ -1323,6 +1325,7 @@ void keyboardFunc(unsigned char key, int x, int y) {
   case 'r':
   case 'R':
     light = 0;
+    // printf("\n %d", i);
     break;
 
   case 'd':
@@ -1340,7 +1343,7 @@ void keyboardFunc(unsigned char key, int x, int y) {
     break;
   case 'l':
   case 'L':
-    right = false;
+    right = !right;
     break;
 
   case '+':
