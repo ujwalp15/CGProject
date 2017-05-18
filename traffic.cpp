@@ -6,7 +6,7 @@
 //  Copyright © 2017 NULL Pointers. All rights reserved.
 //
 
-#include "glut.h"
+#include <GLUT/GLUT.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -710,7 +710,6 @@ void draw_object() {
     }
 
     // car2
-
     glColor3f(0.0, 0.0, 1.0);
     glBegin(GL_POLYGON);
     glVertex2f(-470 + i, 50);
@@ -864,36 +863,72 @@ void draw_object() {
     // car 1
     glColor3f(0.9, 0.2, 0.0);
     glBegin(GL_POLYGON);
-    glVertex2f(1100 - 25 + i, 50);
-    glVertex2f(1100 - 25 + i, 125);
-    glVertex2f(1100 - 75 + i, 200);
-    glVertex2f(1100 - 175 + i, 200);
-    glVertex2f(1100 - 200 + i, 125);
-    glVertex2f(1100 - 250 + i, 115);
-    glVertex2f(1100 - 250 + i, 50);
+    glVertex2f(1100 - 25 - i, 50);
+    glVertex2f(1100 - 25 - i, 125);
+    glVertex2f(1100 - 75 - i, 200);
+    glVertex2f(1100 - 175 - i, 200);
+    glVertex2f(1100 - 200 - i, 125);
+    glVertex2f(1100 - 250 - i, 115);
+    glVertex2f(1100 - 250 - i, 50);
     glEnd();
 
     // windows
     glColor3f(0.1, 0.1, 0.1);
     glBegin(GL_POLYGON);
-    glVertex2f(1100 - 35 + i, 125);
-    glVertex2f(1100 - 80 + i, 190);
-    glVertex2f(1100 - 115 + i, 190);
-    glVertex2f(1100 - 115 + i, 125);
+    glVertex2f(1100 - 35 - i, 125);
+    glVertex2f(1100 - 80 - i, 190);
+    glVertex2f(1100 - 115 - i, 190);
+    glVertex2f(1100 - 115 - i, 125);
     glEnd();
 
     glColor3f(0.1, 0.1, 0.1);
     glBegin(GL_POLYGON);
-    glVertex2f(1100 - 125 + i, 125);
-    glVertex2f(1100 - 125 + i, 190);
-    glVertex2f(1100 - 170 + i, 190);
-    glVertex2f(1100 - 190 + i, 125);
+    glVertex2f(1100 - 125 - i, 125);
+    glVertex2f(1100 - 125 - i, 190);
+    glVertex2f(1100 - 170 - i, 190);
+    glVertex2f(1100 - 190 - i, 125);
     glEnd();
 
     for (l = 0; l < 20; l++) {
       glColor3f(0.0, 0.0, 0.0);
-      draw_circle(75 + i, 50, l);
-      draw_circle(175 + i, 50, l);
+      draw_circle(1100 - 75 - i, 50, l);
+      draw_circle(1100 - 175 - i, 50, l);
+    }
+
+    // car2
+    glColor3f(0.0, 0.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 + 470 - i, 50);
+    glVertex2f(1100 + 470 - i, 112);
+    glVertex2f(1100 + 400 - i, 125);
+    glVertex2f(1100 + 372 - i, 210);
+    glVertex2f(1100 + 210 - i, 210);
+    glVertex2f(1100 + 180 - i, 125);
+    glVertex2f(1100 + 135 - i, 125);
+    glVertex2f(1100 + 110 - i, 50);
+    glEnd();
+
+    // windows
+    glColor3f(0.1, 0.1, 0.1);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 + 410 - i, 125);
+    glVertex2f(1100 + 364 - i, 200);
+    glVertex2f(1100 + 300 - i, 200);
+    glVertex2f(1100 + 300 - i, 125);
+    glEnd();
+
+    glColor3f(0.1, 0.1, 0.1);
+    glBegin(GL_POLYGON);
+    glVertex2f(1100 + 290 - i, 125);
+    glVertex2f(1100 + 290 - i, 200);
+    glVertex2f(1100 + 217 - i, 200);
+    glVertex2f(1100 + 192 - i, 125);
+    glEnd();
+
+    for (l = 0; l < 30; l++) {
+      glColor3f(0.1, 0.1, 0.1);
+      draw_circle(1100 + 350 - i, 50, l);
+      draw_circle(1100 + 200 - i, 50, l);
     }
   }
 
