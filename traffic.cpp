@@ -896,7 +896,7 @@ void draw_object() {
     }
 
     // car2
-    glColor3f(0.0, 0.0, 1.0);
+    glColor3f(0.7, 0.8, 0.0);
     glBegin(GL_POLYGON);
     glVertex2f(1100 + 470 - i, 50);
     glVertex2f(1100 + 470 - i, 112);
