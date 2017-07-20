@@ -1216,14 +1216,14 @@ void display() {
     glClearColor(0.15, 0.1, 0.01, 0); /*background for cover page*/
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1, 0, 0);
-    drawstring(350.0, 650.0, 0.0,
+    drawstring(285.0, 650.0, 0.0,
                "REVA INSTITUTE OF TECHNOLOGY AND MANAGEMENT");
     glColor3f(0.7, 0, 1);
-    drawstring(450, 600, 0.0, "DEPARTMENT OF C AND IT");
+    drawstring(410, 600, 0.0, "DEPARTMENT OF C AND IT");
     glColor3f(1, 0.5, 0);
-    drawstring(420, 550, 0.0, "COMPUTER GRAPHIC PROJECT ON");
+    drawstring(370, 550, 0.0, "COMPUTER GRAPHIC PROJECT ON");
     glColor3f(1, 0, 0);
-    drawstring(440, 500, 0.0, "TRAFFIC SIGNAL SIMULATION");
+    drawstring(400, 500, 0.0, "TRAFFIC SIGNAL SIMULATION");
     glColor3f(1, 0.5, 0);
     drawstring(200, 400, 0.0, "BY:");
     glColor3f(1, 1, 1);
@@ -1237,7 +1237,7 @@ void display() {
     glColor3f(1, 1, 1);
     drawstring(750, 240, 0.0, "Prof. CHAITHRA M H");
     glColor3f(1, 0.1, 1);
-    drawstring(450, 100, 0.0, "PRESS ENTER TO START");
+    drawstring(427, 100, 0.0, "PRESS ENTER TO START");
     glFlush();
   } else if (flag == 1) {
     // HELP SCREEN
@@ -1251,41 +1251,43 @@ void display() {
     glColor3f(0, 0, 1);
     drawstring(600.0, 600.0, 0.0, "TRICKS");
     glColor3f(0.5, 0.1, 0.2);
-    drawstring(250.0, 500.0, 0.0,
+    drawstring(250.0, 550.0, 0.0,
                "Stop the traffic (Red Light)                                  "
-               "PRESS 'r' or 'R'");
+               " PRESS 'r' or 'R'");
     glColor3f(0.5, 0.1, 0.3);
-    drawstring(250.0, 450.0, 0.0,
+    drawstring(250.0, 500.0, 0.0,
                "Yellow Signal                                                  "
                "      PRESS 'y' or 'Y'");
     glColor3f(0.5, 0.1, 0.4);
-    drawstring(250.0, 400.0, 0.0,
+    drawstring(250.0, 450.0, 0.0,
                "Green Signal                                                   "
                "      PRESS 'g' or 'G'");
     glColor3f(0.4, 0.1, 0.5);
-    drawstring(250.0, 350.0, 0.0,
+    drawstring(250.0, 400.0, 0.0,
                "Inc or Dec speed                                               "
-               "   PRESS '+' or '-'");
+               "    PRESS '+' or '-'");
     glColor3f(0.5, 0.1, 0.6);
-    drawstring(250.0, 300.0, 0.0,
+    drawstring(250.0, 350.0, 0.0,
                "Day or Night                                                   "
                "      PRESS 'd' or 'n'");
     glColor3f(0.5, 0.1, 0.65);
-    drawstring(250.0, 250.0, 0.0,
+    drawstring(250.0, 300.0, 0.0,
                "Traffic direction                                              "
                "      PRESS 'l' or 'L'");
     glColor3f(0.5, 0.1, 0.7);
-    drawstring(250.0, 200.0, 0.0,
+    drawstring(250.0, 250.0, 0.0,
                "Menu                                                           "
                "         MOUSE RIGHT BUTTON");
     glColor3f(0.5, 0.1, 0.8);
-    drawstring(250.0, 150.0, 0.0,
+    drawstring(250.0, 200.0, 0.0,
                "Help                                                           "
                "           PRESS 'h' or 'H'");
     glColor3f(0.5, 0.1, 0.9);
-    drawstring(250.0, 100.0, 0.0,
-               "Escape                                                         "
-               "         PRESS 'ENTER'");
+    drawstring(250.0, 150.0, 0.0,
+               "Quit                                                           "
+               "            PRESS 'Q' or 'q'");
+    glColor3f(0.5, 0.1, 1.0);
+    drawstring(380, 100, 0.0, "PRESS ENTER TO START");
     glFlush();
   } else if (flag == 2) {
 
