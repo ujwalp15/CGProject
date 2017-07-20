@@ -81,7 +81,7 @@ void draw_object() {
   int l;
   if (day == 1) {
     // sky
-    glColor3f(0.275, 0.510, 0.706);
+    glColor3f(0.0, 0.710, 1.0);
     glBegin(GL_POLYGON);
     glVertex2f(0, 450);
     glVertex2f(0, 700);
@@ -523,7 +523,7 @@ void draw_object() {
   }
 
   // back compound
-  glColor3f(0.9, 0.9, 0.9);
+  glColor3f(0.2, 0.2, 0.2);
   glBegin(GL_POLYGON);
   glVertex2f(550, 375);
   glVertex2f(600, 425);
