@@ -1070,10 +1070,22 @@ void traffic_light() {
 void idle() {
   glClearColor(1.0, 1.0, 1.0, 1.0);
   angle += 1.0;
-  // Logic for default directio of traffic
+  // Logic for default direction of traffic
   if (right == true) {
     if ((light == 0 || light == 2) &&
-        (i >= 330 &&
+        (i >= 0 &&
+         i <= 270)) // value of i when first vehicle is near the traffic-signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2) &&
+        (i >= 310 &&
          i <= 750)) // value of i when first vehicle is near the traffic-signal
     {
 
@@ -1141,7 +1153,19 @@ void idle() {
 
     // Logic for opposite-way traffic lights
     if ((light == 0 || light == 2) &&
-        (i >= 330 &&
+        (i >= 0 &&
+         i <= 270)) // value of i when first vehicle is near the traffic-signal
+    {
+
+      i += SPEED / 10;
+      ++m;
+      n -= 2;
+      o += 0.2;
+      c += 2;
+    }
+
+    if ((light == 0 || light == 2) &&
+        (i >= 310 &&
          i <= 750)) // value of i when first vehicle is near the traffic-signal
     {
 
